@@ -1,0 +1,60 @@
+import { Injectable } from "@angular/core";
+import {
+  HttpRequest,
+  HttpResponse,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from "@angular/common/http";
+import { Observable, of } from "rxjs";
+import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
+
+let users = JSON.parse(localStorage.getItem("appUsers"));
+
+@Injectable()
+export class RestApiInterceptorService implements HttpInterceptor {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    const { method, url, body } = request;
+
+    return of(null)
+      .pipe(mergeMap(handleRoute))
+      .pipe(materialize())
+      .pipe(delay(500))
+      .pipe(dematerialize());
+
+    function handleRoute() {
+      switch (true) {
+        case url.endsWith("/authenticate") && method === "POST":
+          return authenticate();
+        default:
+          return next.handle(request);
+      }
+    }
+
+    function authenticate() {
+      const { username, password } = body;
+
+      const user = users.find(
+        u => u.username === username && u.password === password
+      );
+      if (!user) {
+        throw new Error("Username and password invalid");
+      } else {
+        return of(
+          new HttpResponse({
+            status: 200,
+            body: {
+              id: user.id,
+              username: user.username,
+              name: user.name,
+              token: "0000-XXX-000"
+            }
+          })
+        );
+      }
+    }
+  }
+}

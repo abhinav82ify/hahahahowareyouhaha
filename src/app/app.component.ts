@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+
+import { AuthenticationService } from "./services/authentication.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  title = 'hahahahowareyouhaha';
+  // constructor(
+  //   private router: Router,
+  //   private authenticationService: AuthenticationService
+  // ) {
+  //   if (this.authenticationService.currentUser.loggedIn) {
+  //     this.router.navigate(["/home"]);
+  //   } else {
+  //     this.router.navigate(["/"]);
+  //   }
+  // }
 }

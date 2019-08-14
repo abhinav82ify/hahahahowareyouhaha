@@ -12,12 +12,14 @@ import { RestApiInterceptorService } from './helpers/rest-api-interceptor.servic
 import { LoginComponent } from './login/login.component';
 import { authReducer } from './store/reducers/auth.reducers';
 import { AuthEffects } from './store/effects/auth.effects';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

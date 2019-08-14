@@ -9,7 +9,7 @@ import {
 import { Observable, of } from "rxjs";
 import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
 
-let users = JSON.parse(localStorage.getItem("appUsers"));
+let users;
 
 @Injectable()
 export class RestApiInterceptorService implements HttpInterceptor {
@@ -17,6 +17,7 @@ export class RestApiInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    users = JSON.parse(localStorage.getItem("appUsers")) || [{"name":"Abhinav Sharma","id":30,"username":"abhinav82ify","password":"password"}];
     const { method, url, body } = request;
 
     return of(null)

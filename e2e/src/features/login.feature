@@ -7,6 +7,7 @@ Feature: Login page
         Then User should see the login page title
         And User should see the field for username and password
         And User should see the login button
+        And User should see the app header
 
     Scenario: When wrong credentials are entered
         Given User is on the "login" page

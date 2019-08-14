@@ -31,6 +31,11 @@ Then(/^User should see the login button$/, () => {
   expect(page.loginBtn).to.be.ok;
 });
 
+Then(/^User should see the app header$/, () => {
+  expect(page.appHeader.logo).to.be.ok;
+  expect(page.appHeader.navbox).to.be.ok;
+});
+
 When(/^User enters username \"([^\"]*)\"$/, async (username) => {
   await page.enterUsername(username);
 });
@@ -40,8 +45,6 @@ When(/^User enters password \"([^\"]*)\"$/, async (password) => {
 });
 
 When(/^User clicks on login button$/, async () => {
-  // page.setUsers();
-  // browser.pause();
   await page.loginBtn.click();
 });
 

@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Store, select } from "@ngrx/store";
 import { AuthState } from "@/store/reducers/auth.reducers";
 import { login } from "@/store/actions/auth.action";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-login",
@@ -16,17 +17,28 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   errorMessage: string = "";
+  authenticated: Boolean;
 
   auth$: Observable<AuthState>;
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<AuthState>
+    private store: Store<AuthState>,
+    private router: Router
   ) {
     this.auth$ = store.pipe(select("auth"));
   }
 
   ngOnInit() {
+    this.auth$.subscribe(state => {
+      this.errorMessage = state.errorMessage;
+      this.authenticated = state.authenticated;
+    });
+
+    if(this.authenticated) {
+      this.router.navigateByUrl('/home');
+    }
+
     this.loginForm = this.formBuilder.group({
       username: ["", Validators.required],
       password: ["", Validators.required]
@@ -47,9 +59,5 @@ export class LoginComponent implements OnInit {
       })
     );
     this.loading = false;
-
-    this.auth$.subscribe(state => {
-      this.errorMessage = state.errorMessage;
-    });
   }
 }

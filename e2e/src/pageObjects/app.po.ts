@@ -1,11 +1,29 @@
-import { browser, by, element } from 'protractor';
+import { browser, element, by, ExpectedConditions } from "protractor";
 
 export class AppPage {
-  navigateTo() {
-    return browser.get('/');
+  navigateTo(url) {
+    return browser.get(url);
   }
 
-  getTitleText() {
-    return element(by.id('login')).getText();
+  currentUrl() {
+    return browser.getCurrentUrl();
+  }
+
+  setUsers() {
+    browser.executeScript(
+      `localStorage.setItem("appUsers", "[{\'name\':\'Abhinav Sharma\',\'id\':30,\'username\':\'abhinav82ify\',\'password\':\'password\'}]")`
+    );
+  }
+
+  
+  isFullyLoaded(page) {
+    let EC = ExpectedConditions;
+    let isPageLoaded = EC.presenceOf(element(by.id(page)));
+
+    return EC.and(isPageLoaded);
+  }
+
+  waitUntilFullyLoaded(timeout = 5000, message, page) {
+    return browser.wait(this.isFullyLoaded(page), timeout, message || `Expected page [${page}] to be fully loaded before ${timeout}ms but it wasn't.`);
   }
 }

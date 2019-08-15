@@ -9,4 +9,8 @@ export class HeaderPo {
     get navbox() {
         return element(by.id('navbox'));
     }
+
+    get logout() {
+        return element(by.id('logout'));
+    }
 }

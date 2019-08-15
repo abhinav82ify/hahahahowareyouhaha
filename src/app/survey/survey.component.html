@@ -1,0 +1,27 @@
+<div class="app-v-survey container" id="survey">
+  <div class="row justify-content-center">
+    <div class="col-8 text-center">
+      <h2 id="surveyTitle">Find out your stress score</h2>
+    </div>
+  </div>
+  <div class="row align-content-center justify-content-center pb-5">
+    <div class="col-4">
+      <div *ngFor="let question of questions">
+        <app-survey-question
+          [question]="question"
+          (calculateCompletedPercentage)="calculateCompletedPercentage()"
+        ></app-survey-question>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col">
+        <app-progress-bar
+          [percentCompleted]="percentCompleted"
+        ></app-progress-bar>
+      </div>
+    </div>
+  </div>
+</div>

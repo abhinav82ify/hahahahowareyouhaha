@@ -8,6 +8,7 @@ import {
 } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
+import mockQuestions from "./mockQuestions";
 
 let users;
 
@@ -17,7 +18,14 @@ export class RestApiInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    users = JSON.parse(localStorage.getItem("appUsers")) || [{"name":"Abhinav Sharma","id":30,"username":"abhinav82ify","password":"password"}];
+    users = JSON.parse(localStorage.getItem("appUsers")) || [
+      {
+        name: "Abhinav Sharma",
+        id: 30,
+        username: "abhinav82ify",
+        password: "password"
+      }
+    ];
     const { method, url, body } = request;
 
     return of(null)
@@ -30,6 +38,8 @@ export class RestApiInterceptorService implements HttpInterceptor {
       switch (true) {
         case url.endsWith("/authenticate") && method === "POST":
           return authenticate();
+        case url.endsWith("/survey-questions") && method === "GET":
+          return surveyQuestions();
         default:
           return next.handle(request);
       }
@@ -56,6 +66,15 @@ export class RestApiInterceptorService implements HttpInterceptor {
           })
         );
       }
+    }
+
+    function surveyQuestions() {
+      return of(
+        new HttpResponse({
+          status: 200,
+          body: mockQuestions
+        })
+      );
     }
   }
 }

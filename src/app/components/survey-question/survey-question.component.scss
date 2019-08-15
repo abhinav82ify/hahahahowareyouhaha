@@ -1,0 +1,38 @@
+$app-s-survey-question-choice-color: #213140;
+
+$app-s-font-family: "Lato", sans-serif !default;
+$app-s-small-font-size-rem: 1.2rem !default;
+$app-s-small-line-height-rem: 1.8rem !default;
+
+.app-c-survey-question {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &__choice {
+    height: 50px;
+    color: black;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(68, 68, 68, 0.18);
+    opacity: 1;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &--selected {
+      background-color: #4b9dea;
+    }
+  }
+
+  &__option {
+    font-family: $app-s-font-family;
+    font-size: $app-s-small-font-size-rem;
+    line-height: $app-s-small-line-height-rem;
+  }
+}

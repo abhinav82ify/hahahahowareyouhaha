@@ -1,0 +1,37 @@
+<div
+  class="app-c-survey-question pt-4"
+  [id]="'surveyQuestion-' + question.order"
+>
+  <div class="row">
+    <div class="col-12">
+      <p class="orb-u-text-light">
+        {{ question.order }} {{ question.question }}
+      </p>
+    </div>
+  </div>
+  <div class="row justify-content-between pl-3">
+    <label
+      *ngFor="let choice of question.choices"
+      class="app-c-survey-question__choice col mb-0"
+      [ngClass]="{
+        'app-c-survey-question__choice--selected':
+          question.selectedChoice === choice
+      }"
+    >
+      <input
+        hidden
+        type="radio"
+        (click)="selectChoice(choice)"
+        [value]="choice"
+        [id]="'surveyQuestion-' + question.order + 'choice' + choice"
+      />{{ choice }}
+    </label>
+  </div>
+  <div class="row justify-content-between">
+    <small
+      *ngFor="let answer of question.availableAnswers"
+      class="col text-center"
+      >{{ answer }}</small
+    >
+  </div>
+</div>

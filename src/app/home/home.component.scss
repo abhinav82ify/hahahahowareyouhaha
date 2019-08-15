@@ -1,0 +1,25 @@
+.app-v-home {
+    background: url(../../assets/images/gray-bg.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: auto;
+    height: 100vh;
+
+    &__content-box {
+        padding-top: 20%;
+    }
+
+    &__content-heading {
+        font-size: 4em;
+        color: chocolate;
+        text-shadow: 1px 1px 0px #333;
+        font-weight: 600;
+    }
+
+    &__content-paragraph {
+        color: whitesmoke;
+        font-weight: 100;
+    }
+}

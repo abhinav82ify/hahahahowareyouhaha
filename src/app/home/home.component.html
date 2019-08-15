@@ -1,4 +1,24 @@
-<p>home works!</p>
-<button (click)="logout()">Logout</button>
-<p *ngIf="user">{{ user.name }}</p>
-<p>{{ authenticated }}</p>
+<div class="app-v-home" id="home">
+    <div class="container">
+        
+        <div class="row align-content-center app-v-home__content-box">
+            <div class="col app-v-home__content-heading" id="heading">
+                Stress evaluator
+            </div>
+        </div>
+        <div class="row align-content-center justify-content-left pl-2">
+            <div class="col col-4 app-v-home__content-paragraph" id="content">
+                This tool will provide you with relevant
+                emotional content and products to help you
+                tackle with your emotional stress position. Click through to access our
+                personalised / interactive tool and take steps 
+                to improve your emotional health.
+            </div>
+        </div>
+        <div class="row align-content-center pt-4 pl-2">
+            <div class="col">
+                <a routerLink="/survey" class="btn btn-dark" id="startBtn">Take me there!</a>
+            </div>
+        </div>
+    </div>
+</div>

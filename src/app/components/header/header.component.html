@@ -12,7 +12,7 @@
           </div>
           <div class="col col-4">
             <nav class="app-c-header__nav text-right" id="navbox">
-              <a routerLink="/home" class="app-c-header__nav-item align-middle">
+              <a routerLink="/survey" class="app-c-header__nav-item align-middle">
                 Getting Started
               </a>
               <a routerLink="/home" class="app-c-header__nav-item align-middle">
@@ -21,7 +21,7 @@
               <a routerLink="/home" class="app-c-header__nav-item align-middle">
                 About us
               </a>
-              <a (click)="logout()" *ngIf="authenticated" class="app-c-header__nav-item align-middle">
+              <a (click)="logout()" *ngIf="authenticated" class="app-c-header__nav-item align-middle" id="logout">
                 Logout
               </a>
             </nav>

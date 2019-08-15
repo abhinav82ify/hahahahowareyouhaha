@@ -1,5 +1,6 @@
 export enum PageUrl {
     login = "/",
     home = "/home",
-    survey = "/survey"
+    survey = "/survey",
+    results = "/results"
 }

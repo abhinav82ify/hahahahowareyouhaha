@@ -1,0 +1,28 @@
+$app-progress-bar-height-px: 60px;
+$app-progress-bar-content-height-px: 12px;
+$app-progress-bar-border-radius-px: 25px;
+$app-progress-bar-complete-font-size: 15px;
+
+.app-c-progress-bar {
+  background: gray;
+  position: fixed;
+  bottom: 0;
+  height: $app-progress-bar-height-px;
+  overflow: hidden;
+
+  &__bar {
+    height: $app-progress-bar-content-height-px;
+    background: white;
+    border-radius: $app-progress-bar-border-radius-px;
+    &--progress {
+      height: 100%;
+      background: #4b9dea;
+      border-radius: $app-progress-bar-border-radius-px;
+    }
+  }
+
+  &__complete {
+    color: #4b9dea;
+    font-size: $app-progress-bar-complete-font-size;
+  }
+}

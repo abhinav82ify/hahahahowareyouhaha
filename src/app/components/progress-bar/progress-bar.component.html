@@ -1,0 +1,39 @@
+<div>
+  <footer>
+    <div class="container app-c-progress-bar">
+      <div class="row justify-content-between align-items-center m-0">
+        <div class="col-sm-6">
+          <div class="row justify-content-center align-items-center">
+            <div class="col">
+              <span class="app-c-progress-bar__complete" id="statusBar">
+                {{ percentCompleted }} % complete
+              </span>
+              <div class="app-c-progress-bar__bar mt-2">
+                <div
+                  class="app-c-progress-bar__bar--progress"
+                  [ngStyle]="{ width: percentCompleted + '%' }"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="row align-items-center justify-content-center">
+            <div class="col text-right pt-2">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [disabled]="percentCompleted !== 100"
+                (click)="navigateToResults()"
+                id="surveyFinishBtn"
+              >
+                Finish
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

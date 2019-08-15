@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
@@ -13,16 +13,27 @@ import { LoginComponent } from './login/login.component';
 import { authReducer } from './store/reducers/auth.reducers';
 import { AuthEffects } from './store/effects/auth.effects';
 import { HeaderComponent } from './components/header/header.component';
+import { SurveyQuestionComponent } from './components/survey-question/survey-question.component';
+import { SurveyComponent } from './survey/survey.component';
+import { CommonModule } from '@angular/common';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    SurveyQuestionComponent,
+    SurveyComponent,
+    ProgressBarComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     EffectsModule.forRoot([AuthEffects]),

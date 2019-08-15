@@ -1,13 +1,12 @@
 import { by, element } from "protractor";
 import { AppPage } from "./app.po";
-import { HeaderPo } from './header.po';
+import { HeaderPo } from "./header.po";
 
 export class LoginPage extends AppPage {
-
   get appHeader() {
     return new HeaderPo();
   }
-  
+
   get username() {
     return element(by.id("username"));
   }

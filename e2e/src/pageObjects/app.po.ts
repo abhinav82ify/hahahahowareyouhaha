@@ -15,7 +15,6 @@ export class AppPage {
     );
   }
 
-  
   isFullyLoaded(page) {
     let EC = ExpectedConditions;
     let isPageLoaded = EC.presenceOf(element(by.id(page)));
@@ -24,6 +23,11 @@ export class AppPage {
   }
 
   waitUntilFullyLoaded(timeout = 5000, message, page) {
-    return browser.wait(this.isFullyLoaded(page), timeout, message || `Expected page [${page}] to be fully loaded before ${timeout}ms but it wasn't.`);
+    return browser.driver.wait(
+      this.isFullyLoaded(page),
+      timeout,
+      message ||
+        `Expected page [${page}] to be fully loaded before ${timeout}ms but it wasn't.`
+    );
   }
 }

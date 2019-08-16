@@ -1,1 +1,47 @@
-<p>results works!</p>
+<div class="app-v-results container" id="results">
+  <div class="row justify-content-center">
+    <div class="col-8 text-center">
+      <mat-card>
+        <mat-card-content>
+          <h4 class="app-v-results__heading" id="resultsHeading">Result</h4>
+          <section class="app-v-results__progress-bar-container">
+            <mat-progress-bar
+              id="scoreBar"
+              class="ml-2 mr-2"
+              [color]="color"
+              mode="determinate"
+              [value]="score"
+            >
+            </mat-progress-bar>
+          </section>
+          <p *ngIf="score < 30">
+            Your answers suggest you are suffering from severe depression. It is
+            important that you schedule an appointment with your doctor or a
+            mental health worker now. If you need help we strongly suggest that you
+            reach out to to a qualified mental health professional.
+          </p>
+          <p *ngIf="score >= 30 && score < 55">
+            Your answers suggest you are suffering from moderate to severe
+            depression. It doesn’t necessarily mean you have depression but is
+            important that you schedule an appointment with your doctor or a
+            mental health worker. If you need help we strongly suggest that you
+            reach out to to a qualified mental health professional.
+          </p>
+          <p *ngIf="score >= 55 && score < 70">
+            Your answers suggest you are suffering from moderate depression.
+            Consider watchful waiting, and testing again normally within two
+            weeks. We additionally suggest it would be prudent to start a
+            conversation with your doctor.If you need help we strongly suggest
+            that you reach out to to a qualified mental health professional
+          </p>
+          <p *ngIf="score >= 70">
+            Your answers suggest you may not be suffering from depression. Still
+            if you feel something isn’t quite right we recommend you schedule an
+            appointment with your doctor. If you need help we strongly suggest
+            that you reach out to to a qualified mental health professional.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -10,4 +10,8 @@ export class SurveyQuestionsService {
   getQuestions() {
     return this.http.get<any>(`${this.BASE_URL}/survey-questions`);
   }
+
+  calculateScore(answers) {
+    return this.http.post<any>(`${this.BASE_URL}/calculate-score`, {answers});
+  }
 }

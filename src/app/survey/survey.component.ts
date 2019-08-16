@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Question } from "@/models/question.model";
 import { SurveyQuestionsService } from "@/services/survey-questions.service";
+import { Store, select } from "@ngrx/store";
+import { getQuestions } from '@/store/actions/questions.action';
+import { Observable } from 'rxjs';
 
 const availableChoices = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -12,15 +15,28 @@ const availableChoices = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 export class SurveyComponent implements OnInit {
   questions: Question[];
   percentCompleted: Number = 0;
-  constructor(private surveyQuestionsService: SurveyQuestionsService) {}
+  questions$: Observable<Question[]>;
+  constructor(
+    private surveyQuestionsService: SurveyQuestionsService,
+    private store: Store<Question[]>
+  ) {
+    this.questions$ = store.pipe(select("questions"));
+    store.dispatch(getQuestions());
+  }
 
   ngOnInit() {
-    this.surveyQuestionsService.getQuestions().subscribe(data => {
-      this.questions = data;
+    // this.surveyQuestionsService.getQuestions().subscribe(data => {
+    //   this.questions = data;
+    //   this.questions.forEach(element => {
+    //     element.choices = availableChoices;
+    //   });
+    // });
+    this.questions$.subscribe(state => {
+      this.questions = state;
       this.questions.forEach(element => {
         element.choices = availableChoices;
       });
-    });
+    })
   }
 
   calculateCompletedPercentage() {

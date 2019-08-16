@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
+import { MatCardModule } from "@angular/material/card";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
@@ -18,6 +20,9 @@ import { SurveyComponent } from './survey/survey.component';
 import { CommonModule } from '@angular/common';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ResultsComponent } from './results/results.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { QuestionsEffects } from './store/effects/questions.effects';
+import { questionsReducer } from './store/reducers/questions.reducers';
 
 @NgModule({
   declarations: [
@@ -36,9 +41,12 @@ import { ResultsComponent } from './results/results.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    EffectsModule.forRoot([AuthEffects]),
-    StoreModule.forRoot({auth: authReducer}),
-    AppRoutingModule
+    MatCardModule,
+    MatProgressBarModule,
+    EffectsModule.forRoot([AuthEffects, QuestionsEffects]),
+    StoreModule.forRoot({auth: authReducer, questions: questionsReducer}),
+    AppRoutingModule,
+    NoopAnimationsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: RestApiInterceptorService, multi: true}

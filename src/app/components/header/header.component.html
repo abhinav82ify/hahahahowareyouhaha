@@ -10,7 +10,10 @@
           <span
             class="app-c-header__logo-text"
             [ngClass]="{ 'app-c-header__logo-text--secondary': authenticated }"
-            >SE</span
+            >S<small class="app-c-header__logo-text__small">tress</small>E<small
+              class="app-c-header__logo-text__small"
+              >valuator</small
+            ></span
           >
         </span>
       </a>
@@ -27,6 +30,7 @@
           About us
         </a>
         <a
+          routerLink=""
           (click)="logout()"
           *ngIf="authenticated"
           class="app-c-header__nav-item align-middle"

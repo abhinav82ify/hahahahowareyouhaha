@@ -12,6 +12,7 @@ import { logout } from '@/store/actions/auth.action';
 export class HomeComponent implements OnInit {
   auth$: Observable<AuthState>;
   authenticated: Boolean = false;
+  name: String = '';
 
   constructor(private store: Store<AuthState>) {
     this.auth$ = store.pipe(select('auth'));
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.auth$.subscribe((state) => {
+      this.name = state.user.name;
       this.authenticated = state.authenticated;
     });
   }

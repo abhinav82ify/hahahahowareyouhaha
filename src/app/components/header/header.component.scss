@@ -25,6 +25,10 @@
     font-size: 2em;
     font-weight: 400;
     letter-spacing: 4px;
+
+    &__small {
+      font-size: 30%;
+    }
   }
 
   &__logo-text--secondary {

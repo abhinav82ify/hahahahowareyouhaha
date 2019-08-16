@@ -41,6 +41,7 @@ Then(
 );
 
 Then(/^User should see questions$/, async () => {
+  surveyPage.waitUntilFullyLoaded(5000, null, "surveyQuestion-1");
   expect(await surveyPage.getQuestion(1).isPresent()).to.be.true;
   expect(await surveyPage.getQuestion(10).isPresent()).to.be.true;
 });

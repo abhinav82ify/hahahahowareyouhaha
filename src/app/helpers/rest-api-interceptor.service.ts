@@ -40,6 +40,8 @@ export class RestApiInterceptorService implements HttpInterceptor {
           return authenticate();
         case url.endsWith("/survey-questions") && method === "GET":
           return surveyQuestions();
+        case url.endsWith("/calculate-score") && method === "POST":
+          return calculateScore();
         default:
           return next.handle(request);
       }
@@ -75,6 +77,22 @@ export class RestApiInterceptorService implements HttpInterceptor {
           body: mockQuestions
         })
       );
+    }
+
+    function calculateScore() {
+      const { answers } = body;
+
+      let score = 0;
+      answers.forEach(element => {
+        score += parseInt(element);
+      });
+
+      score /= answers.length;
+
+      return of(new HttpResponse({
+        status: 200,
+        body: { score }
+      }));
     }
   }
 }

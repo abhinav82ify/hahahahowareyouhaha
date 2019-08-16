@@ -1,0 +1,20 @@
+.app-v-login {
+  &__left {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    background: url(../../assets/images/login.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: auto;
+    height: 100vh;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

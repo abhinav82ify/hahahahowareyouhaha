@@ -1,30 +1,44 @@
 <header
-    id="appHeader"
-    class="app-c-header container"
-    >
-        <div class="row align-items-center justify-content-center">
-          <div class="col col-4">
-            <a routerLink="/" class="app-c-header__logo" id="logo">
-              <span>
-                <span class="app-c-header__logo-text" [ngClass]="{'app-c-header__logo-text--secondary': authenticated}">hahahahowareyouhaha</span>
-              </span>
-            </a>
-          </div>
-          <div class="col col-4">
-            <nav class="app-c-header__nav text-right" id="navbox">
-              <a routerLink="/survey" class="app-c-header__nav-item align-middle">
-                Getting Started
-              </a>
-              <a routerLink="/home" class="app-c-header__nav-item align-middle">
-                FAQs
-              </a>
-              <a routerLink="/home" class="app-c-header__nav-item align-middle">
-                About us
-              </a>
-              <a (click)="logout()" *ngIf="authenticated" class="app-c-header__nav-item align-middle" id="logout">
-                Logout
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+  id="appHeader"
+  class="app-c-header container"
+  [ngClass]="{ 'app-c-header--solid': !isHomeRoute }"
+>
+  <div class="row align-items-center justify-content-center">
+    <div class="col col-4">
+      <a routerLink="/" class="app-c-header__logo" id="logo">
+        <span>
+          <span
+            class="app-c-header__logo-text"
+            [ngClass]="{ 'app-c-header__logo-text--secondary': authenticated }"
+            >S<small class="app-c-header__logo-text__small">tress</small>E<small
+              class="app-c-header__logo-text__small"
+              >valuator</small
+            ></span
+          >
+        </span>
+      </a>
+    </div>
+    <div class="col col-4">
+      <nav class="app-c-header__nav text-right" id="navbox">
+        <a routerLink="/survey" class="app-c-header__nav-item align-middle">
+          Getting Started
+        </a>
+        <a routerLink="/home" class="app-c-header__nav-item align-middle">
+          FAQs
+        </a>
+        <a routerLink="/home" class="app-c-header__nav-item align-middle">
+          About us
+        </a>
+        <a
+          routerLink=""
+          (click)="logout()"
+          *ngIf="authenticated"
+          class="app-c-header__nav-item align-middle"
+          id="logout"
+        >
+          Logout
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -25,17 +25,12 @@ export class SurveyComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.surveyQuestionsService.getQuestions().subscribe(data => {
-    //   this.questions = data;
-    //   this.questions.forEach(element => {
-    //     element.choices = availableChoices;
-    //   });
-    // });
     this.questions$.subscribe(state => {
       this.questions = state;
       this.questions.forEach(element => {
         element.choices = availableChoices;
       });
+      this.calculateCompletedPercentage();
     })
   }
 

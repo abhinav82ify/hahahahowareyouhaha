@@ -6,6 +6,8 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatTableModule } from "@angular/material/table";
 
 import { AppRoutingModule } from '@/app-routing.module';
 import { AppComponent } from '@/app.component';
@@ -23,6 +25,7 @@ import { ResultsComponent } from './results/results.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionsEffects } from './store/effects/questions.effects';
 import { questionsReducer } from './store/reducers/questions.reducers';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { questionsReducer } from './store/reducers/questions.reducers';
     SurveyQuestionComponent,
     SurveyComponent,
     ProgressBarComponent,
-    ResultsComponent
+    ResultsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { questionsReducer } from './store/reducers/questions.reducers';
     HttpClientModule,
     MatCardModule,
     MatProgressBarModule,
+    MatPaginatorModule,
+    MatTableModule,
     EffectsModule.forRoot([AuthEffects, QuestionsEffects]),
     StoreModule.forRoot({auth: authReducer, questions: questionsReducer}),
     AppRoutingModule,

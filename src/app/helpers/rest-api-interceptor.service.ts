@@ -9,6 +9,7 @@ import {
 import { Observable, of } from "rxjs";
 import { delay, mergeMap, materialize, dematerialize } from "rxjs/operators";
 import mockQuestions from "./mockQuestions";
+import mockUsers from "./mockUsers";
 
 let users;
 
@@ -27,6 +28,8 @@ export class RestApiInterceptorService implements HttpInterceptor {
       }
     ];
     const { method, url, body } = request;
+    console.log(request.params.get('beginIndex'));
+    console.log(request.params.get('endIndex'));
 
     return of(null)
       .pipe(mergeMap(handleRoute))
@@ -42,6 +45,8 @@ export class RestApiInterceptorService implements HttpInterceptor {
           return surveyQuestions();
         case url.endsWith("/calculate-score") && method === "POST":
           return calculateScore();
+        case url.endsWith("/users") && method === "GET":
+          return fetchUsers();
         default:
           return next.handle(request);
       }
@@ -94,5 +99,19 @@ export class RestApiInterceptorService implements HttpInterceptor {
         body: { score }
       }));
     }
+
+    function fetchUsers() {
+      let beginIndex = parseInt(request.params.get('beginIndex'));
+      let endIndex = parseInt(request.params.get('endIndex'));
+      let result = mockUsers.slice(beginIndex-1, endIndex);
+
+      return of(
+        new HttpResponse({
+          status: 200,
+          body: result
+        })
+      );
+    }
+
   }
 }

@@ -38,8 +38,8 @@ export class RestApiInterceptorService implements HttpInterceptor {
       switch (true) {
         case url.endsWith("/authenticate") && method === "POST":
           return authenticate();
-        case url.endsWith("/survey-questions") && method === "GET":
-          return surveyQuestions();
+        // case url.endsWith("/survey-questions") && method === "GET":
+        //   return surveyQuestions();
         case url.endsWith("/calculate-score") && method === "POST":
           return calculateScore();
         default:

@@ -8,7 +8,7 @@ export class SurveyQuestionsService {
   constructor(private http: HttpClient) {}
 
   getQuestions() {
-    return this.http.get<any>(`${this.BASE_URL}/survey-questions`);
+    return this.http.get<any>(`/api/survey-questions`);
   }
 
   calculateScore(answers) {
